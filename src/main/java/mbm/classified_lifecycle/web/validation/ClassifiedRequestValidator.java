@@ -1,7 +1,7 @@
 package mbm.classified_lifecycle.web.validation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 import mbm.classified_lifecycle.web.model.ClassifiedRequest;
 import org.springframework.stereotype.Component;

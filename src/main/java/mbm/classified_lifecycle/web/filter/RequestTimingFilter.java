@@ -1,13 +1,13 @@
 package mbm.classified_lifecycle.web.filter;
 
 import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -29,7 +29,7 @@ public class RequestTimingFilter implements Filter {
     chain.doFilter(request, response);
 
     final long duration = System.currentTimeMillis() - startTime;
-    if (duration > THRESHOLD_MS && request instanceof javax.servlet.http.HttpServletRequest) {
+    if (duration > THRESHOLD_MS && request instanceof jakarta.servlet.http.HttpServletRequest) {
       log.warn(
           "Request to [{}] took {} ms to process",
           ((HttpServletRequest) request).getRequestURL(),

@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.18</version>
+        <version>3.2.5</version>
         <relativePath/>
     </parent>
 
@@ -18,14 +18,14 @@
     <description>classified-lifecycle</description>
 
     <properties>
-        <java.version>11</java.version>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
 
-        <jackson-databind.version>2.15.2</jackson-databind.version>
+        <jackson-databind.version>2.16.1</jackson-databind.version>
         <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
-        <springdoc-openapi.version>1.7.0</springdoc-openapi.version>
-        <openapi-generator-maven-plugin.version>7.12.0</openapi-generator-maven-plugin.version>
+        <springdoc-openapi.version>2.4.0</springdoc-openapi.version>
+        <openapi-generator-maven-plugin.version>7.2.0</openapi-generator-maven-plugin.version>
         <instancio.version>5.2.1</instancio.version>
         <lombok.version>1.18.30</lombok.version>
 
@@ -39,8 +39,8 @@
         <openapi.schemaMappings>${openapi.commonSchemas}</openapi.schemaMappings>
         <openapi.importMappings>${openapi.generalImports},${openapi.commonSchemas}</openapi.importMappings>
         <openapi.typeMappings>${openapi.generalTypes},${openapi.commonSchemas}</openapi.typeMappings>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <spotless-maven-plugin.version>2.45.0</spotless-maven-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
         <jib-maven-plugin.version>3.4.1</jib-maven-plugin.version>
     </properties>
 
@@ -85,7 +85,7 @@
         <!-- Open API -->
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>${springdoc-openapi.version}</version>
         </dependency>
         <dependency>
@@ -119,8 +119,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>21</source>
+                    <target>21</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
@@ -152,7 +152,7 @@
                 <configuration>
                     <java>
                         <googleJavaFormat>
-                            <version>1.17.0</version>
+                            <version>1.19.2</version>
                         </googleJavaFormat>
                     </java>
                 </configuration>
@@ -165,7 +165,7 @@
                 <version>${jib-maven-plugin.version}</version>
                 <configuration>
                     <from>
-                        <image>eclipse-temurin:11-jre</image>
+                        <image>eclipse-temurin:21-jre</image>
                     </from>
                     <to>
                         <image>${project.groupId}/${project.artifactId}:${project.version}</image>
@@ -222,7 +222,7 @@
                     <configOptions>
                         <delegatePattern>true</delegatePattern>
                         <performBeanValidation>true</performBeanValidation>
-                        <useSpringBoot3>false</useSpringBoot3>
+                        <useSpringBoot3>true</useSpringBoot3>
                         <useTags>true</useTags>
                     </configOptions>
                     <supportingFilesToGenerate>ApiUtil.java,RFC3339DateFormat.java,HomeController.java</supportingFilesToGenerate>

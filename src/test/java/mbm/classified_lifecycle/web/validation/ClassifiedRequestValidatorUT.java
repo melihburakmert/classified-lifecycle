@@ -7,7 +7,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidatorContext;
 import mbm.classified_lifecycle.web.model.ClassifiedRequest;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.BeforeEach;
