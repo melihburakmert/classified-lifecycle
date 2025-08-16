@@ -11,20 +11,20 @@ public class ClassifiedResponseMapper {
 
   public ClassifiedResponse map(final ClassifiedDto classifiedDto) {
     return new ClassifiedResponse()
-        .id(classifiedDto.getId())
-        .title(classifiedDto.getTitle())
-        .description(classifiedDto.getDescription())
+        .id(classifiedDto.id())
+        .title(classifiedDto.title())
+        .description(classifiedDto.description())
         .category(mapCategory(classifiedDto))
         .status(mapStatus(classifiedDto))
-        .createdAt(classifiedDto.getCreatedAt())
-        .expiresAt(classifiedDto.getExpiresAt());
+        .createdAt(classifiedDto.createdAt())
+        .expiresAt(classifiedDto.expiresAt());
   }
 
   private ClassifiedCategory mapCategory(final ClassifiedDto classifiedDto) {
-    return ClassifiedCategory.fromValue(classifiedDto.getCategory().getValue());
+    return ClassifiedCategory.fromValue(classifiedDto.category().getValue());
   }
 
   private ClassifiedStatus mapStatus(final ClassifiedDto classifiedDto) {
-    return ClassifiedStatus.fromValue(classifiedDto.getStatus().getValue());
+    return ClassifiedStatus.fromValue(classifiedDto.status().getValue());
   }
 }

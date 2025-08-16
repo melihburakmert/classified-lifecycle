@@ -27,12 +27,12 @@ class ClassifiedResponseMapperUT {
 
     // THEN
     assertThat(response).isNotNull();
-    assertThat(response.getId()).isEqualTo(dto.getId());
-    assertThat(response.getTitle()).isEqualTo(dto.getTitle());
-    assertThat(response.getDescription()).isEqualTo(dto.getDescription());
-    assertThat(response.getCategory()).hasToString(dto.getCategory().getValue());
-    assertThat(response.getStatus()).hasToString(dto.getStatus().getValue());
-    assertThat(response.getCreatedAt()).isEqualTo(dto.getCreatedAt());
-    assertThat(response.getExpiresAt()).isEqualTo(dto.getExpiresAt());
+    assertThat(response.getId()).isEqualTo(dto.id());
+    assertThat(response.getTitle()).isEqualTo(dto.title());
+    assertThat(response.getDescription()).isEqualTo(dto.description());
+    assertThat(response.getCategory()).hasToString(dto.category().getValue());
+    assertThat(response.getStatus()).hasToString(dto.status().getValue());
+    assertThat(response.getCreatedAt()).isEqualTo(dto.createdAt());
+    assertThat(response.getExpiresAt()).isEqualTo(dto.expiresAt());
   }
 }

@@ -26,8 +26,8 @@ class ClassifiedRequestMapperUT {
     final ClassifiedRequestDto dto = mapper.map(request);
 
     // THEN
-    assertThat(dto.getTitle()).isEqualTo(request.getTitle());
-    assertThat(dto.getDescription()).isEqualTo(request.getDescription());
-    assertThat(dto.getCategory()).hasToString(request.getCategory().getValue());
+    assertThat(dto.title()).isEqualTo(request.getTitle());
+    assertThat(dto.description()).isEqualTo(request.getDescription());
+    assertThat(dto.category()).hasToString(request.getCategory().getValue());
   }
 }

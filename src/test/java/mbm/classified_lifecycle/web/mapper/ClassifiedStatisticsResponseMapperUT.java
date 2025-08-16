@@ -27,6 +27,6 @@ class ClassifiedStatisticsResponseMapperUT {
 
     // THEN
     assertThat(response).isNotNull();
-    assertThat(response.getCountByStatus()).isEqualTo(dto.getCountByStatus());
+    assertThat(response.getCountByStatus()).isEqualTo(dto.countByStatus());
   }
 }

@@ -25,14 +25,14 @@ class ClassifiedHistoryResponseMapperUT {
     // GIVEN
     final ClassifiedHistoryDto dto1 =
         of(ClassifiedHistoryDto.class)
-            .set(field(ClassifiedHistoryDto::getPreviousStatus), ClassifiedStatus.PENDING_APPROVAL)
-            .set(field(ClassifiedHistoryDto::getNewStatus), ClassifiedStatus.ACTIVE)
+            .set(field("previousStatus"), ClassifiedStatus.PENDING_APPROVAL)
+            .set(field("newStatus"), ClassifiedStatus.ACTIVE)
             .create();
 
     final ClassifiedHistoryDto dto2 =
         of(ClassifiedHistoryDto.class)
-            .set(field(ClassifiedHistoryDto::getPreviousStatus), null)
-            .set(field(ClassifiedHistoryDto::getNewStatus), ClassifiedStatus.INACTIVE)
+            .set(field("previousStatus"), null)
+            .set(field("newStatus"), ClassifiedStatus.INACTIVE)
             .create();
 
     final List<ClassifiedHistoryDto> dtos = List.of(dto1, dto2);
@@ -45,19 +45,19 @@ class ClassifiedHistoryResponseMapperUT {
         .hasSize(2)
         .satisfiesExactlyInAnyOrder(
             resp -> {
-              assertThat(resp.getId()).isEqualTo(dto1.getId());
-              assertThat(resp.getClassifiedId()).isEqualTo(dto1.getClassifiedId());
+              assertThat(resp.getId()).isEqualTo(dto1.id());
+              assertThat(resp.getClassifiedId()).isEqualTo(dto1.classifiedId());
               assertThat(resp.getPreviousStatus())
                   .hasToString(ClassifiedStatus.PENDING_APPROVAL.getValue());
               assertThat(resp.getNewStatus()).hasToString(ClassifiedStatus.ACTIVE.getValue());
-              assertThat(resp.getChangedAt()).isEqualTo(dto1.getChangedAt());
+              assertThat(resp.getChangedAt()).isEqualTo(dto1.changedAt());
             },
             resp -> {
-              assertThat(resp.getId()).isEqualTo(dto2.getId());
-              assertThat(resp.getClassifiedId()).isEqualTo(dto2.getClassifiedId());
+              assertThat(resp.getId()).isEqualTo(dto2.id());
+              assertThat(resp.getClassifiedId()).isEqualTo(dto2.classifiedId());
               assertThat(resp.getPreviousStatus()).isNull();
               assertThat(resp.getNewStatus()).hasToString(ClassifiedStatus.INACTIVE.getValue());
-              assertThat(resp.getChangedAt()).isEqualTo(dto2.getChangedAt());
+              assertThat(resp.getChangedAt()).isEqualTo(dto2.changedAt());
             });
   }
 }

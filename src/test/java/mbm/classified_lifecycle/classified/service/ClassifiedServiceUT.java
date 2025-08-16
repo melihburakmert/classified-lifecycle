@@ -51,16 +51,16 @@ class ClassifiedServiceUT {
     // GIVEN
     final ClassifiedRequestDto requestDto =
         of(ClassifiedRequestDto.class)
-            .set(field(ClassifiedRequestDto::getCategory), ClassifiedCategory.SHOPPING)
+            .set(field("category"), ClassifiedCategory.SHOPPING)
             .create();
     final ClassifiedEntity savedEntity = create(ClassifiedEntity.class);
     final ClassifiedDto dto = create(ClassifiedDto.class);
 
     when(classifiedRepository.existsByTitleAndDescriptionAndCategory(
-            requestDto.getTitle(), requestDto.getDescription(), requestDto.getCategory()))
+            requestDto.title(), requestDto.description(), requestDto.category()))
         .thenReturn(false);
     when(classifiedExpirationCalculator.calculateExpirationDate(
-            eq(requestDto.getCategory()), any()))
+            eq(requestDto.category()), any()))
         .thenReturn(create(Instant.class));
     when(classifiedRepository.save(any(ClassifiedEntity.class))).thenReturn(savedEntity);
     when(classifiedEntityToDtoMapper.map(savedEntity)).thenReturn(dto);
@@ -73,17 +73,17 @@ class ClassifiedServiceUT {
 
     verify(classifiedRepository)
         .existsByTitleAndDescriptionAndCategory(
-            requestDto.getTitle(), requestDto.getDescription(), requestDto.getCategory());
+            requestDto.title(), requestDto.description(), requestDto.category());
     verify(classifiedExpirationCalculator)
-        .calculateExpirationDate(eq(requestDto.getCategory()), any());
+        .calculateExpirationDate(eq(requestDto.category()), any());
     verify(classifiedEntityToDtoMapper).map(savedEntity);
 
     final ArgumentCaptor<ClassifiedEntity> captor = ArgumentCaptor.forClass(ClassifiedEntity.class);
     verify(classifiedRepository).save(captor.capture());
     final ClassifiedEntity capturedEntity = captor.getValue();
-    assertThat(capturedEntity.getTitle()).isEqualTo(requestDto.getTitle());
-    assertThat(capturedEntity.getDescription()).isEqualTo(requestDto.getDescription());
-    assertThat(capturedEntity.getCategory()).isEqualTo(requestDto.getCategory());
+    assertThat(capturedEntity.getTitle()).isEqualTo(requestDto.title());
+    assertThat(capturedEntity.getDescription()).isEqualTo(requestDto.description());
+    assertThat(capturedEntity.getCategory()).isEqualTo(requestDto.category());
   }
 
   @ParameterizedTest
@@ -94,16 +94,16 @@ class ClassifiedServiceUT {
     // GIVEN
     final ClassifiedRequestDto requestDto =
         of(ClassifiedRequestDto.class)
-            .set(field(ClassifiedRequestDto::getCategory), category)
+            .set(field("category"), category)
             .create();
     final ClassifiedEntity savedEntity = create(ClassifiedEntity.class);
     final ClassifiedDto dto = create(ClassifiedDto.class);
 
     when(classifiedRepository.existsByTitleAndDescriptionAndCategory(
-            requestDto.getTitle(), requestDto.getDescription(), requestDto.getCategory()))
+            requestDto.title(), requestDto.description(), requestDto.category()))
         .thenReturn(false);
     when(classifiedExpirationCalculator.calculateExpirationDate(
-            eq(requestDto.getCategory()), any()))
+            eq(requestDto.category()), any()))
         .thenReturn(create(Instant.class));
     when(classifiedRepository.save(any(ClassifiedEntity.class))).thenReturn(savedEntity);
     when(classifiedEntityToDtoMapper.map(savedEntity)).thenReturn(dto);
@@ -116,17 +116,17 @@ class ClassifiedServiceUT {
 
     verify(classifiedRepository)
         .existsByTitleAndDescriptionAndCategory(
-            requestDto.getTitle(), requestDto.getDescription(), requestDto.getCategory());
+            requestDto.title(), requestDto.description(), requestDto.category());
     verify(classifiedExpirationCalculator)
-        .calculateExpirationDate(eq(requestDto.getCategory()), any());
+        .calculateExpirationDate(eq(requestDto.category()), any());
     verify(classifiedEntityToDtoMapper).map(savedEntity);
 
     final ArgumentCaptor<ClassifiedEntity> captor = ArgumentCaptor.forClass(ClassifiedEntity.class);
     verify(classifiedRepository).save(captor.capture());
     final ClassifiedEntity capturedEntity = captor.getValue();
-    assertThat(capturedEntity.getTitle()).isEqualTo(requestDto.getTitle());
-    assertThat(capturedEntity.getDescription()).isEqualTo(requestDto.getDescription());
-    assertThat(capturedEntity.getCategory()).isEqualTo(requestDto.getCategory());
+    assertThat(capturedEntity.getTitle()).isEqualTo(requestDto.title());
+    assertThat(capturedEntity.getDescription()).isEqualTo(requestDto.description());
+    assertThat(capturedEntity.getCategory()).isEqualTo(requestDto.category());
     assertThat(capturedEntity.getStatus()).isEqualTo(ClassifiedStatus.PENDING_APPROVAL);
   }
 
@@ -138,10 +138,10 @@ class ClassifiedServiceUT {
     final ClassifiedDto dto = create(ClassifiedDto.class);
 
     when(classifiedRepository.existsByTitleAndDescriptionAndCategory(
-            requestDto.getTitle(), requestDto.getDescription(), requestDto.getCategory()))
+            requestDto.title(), requestDto.description(), requestDto.category()))
         .thenReturn(true);
     when(classifiedExpirationCalculator.calculateExpirationDate(
-            eq(requestDto.getCategory()), any()))
+            eq(requestDto.category()), any()))
         .thenReturn(create(Instant.class));
     when(classifiedRepository.save(any(ClassifiedEntity.class))).thenReturn(savedEntity);
     when(classifiedEntityToDtoMapper.map(savedEntity)).thenReturn(dto);
@@ -154,17 +154,17 @@ class ClassifiedServiceUT {
 
     verify(classifiedRepository)
         .existsByTitleAndDescriptionAndCategory(
-            requestDto.getTitle(), requestDto.getDescription(), requestDto.getCategory());
+            requestDto.title(), requestDto.description(), requestDto.category());
     verify(classifiedExpirationCalculator)
-        .calculateExpirationDate(eq(requestDto.getCategory()), any());
+        .calculateExpirationDate(eq(requestDto.category()), any());
     verify(classifiedEntityToDtoMapper).map(savedEntity);
 
     final ArgumentCaptor<ClassifiedEntity> captor = ArgumentCaptor.forClass(ClassifiedEntity.class);
     verify(classifiedRepository).save(captor.capture());
     final ClassifiedEntity capturedEntity = captor.getValue();
-    assertThat(capturedEntity.getTitle()).isEqualTo(requestDto.getTitle());
-    assertThat(capturedEntity.getDescription()).isEqualTo(requestDto.getDescription());
-    assertThat(capturedEntity.getCategory()).isEqualTo(requestDto.getCategory());
+    assertThat(capturedEntity.getTitle()).isEqualTo(requestDto.title());
+    assertThat(capturedEntity.getDescription()).isEqualTo(requestDto.description());
+    assertThat(capturedEntity.getCategory()).isEqualTo(requestDto.category());
     assertThat(capturedEntity.getStatus()).isEqualTo(ClassifiedStatus.DUPLICATE);
   }
 

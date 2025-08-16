@@ -79,7 +79,7 @@ class ClassifiedControllerIT extends IntegrationTestConfig {
     assertThat(response.getCreatedAt()).isNotNull();
     assertThat(response.getExpiresAt())
         .isNotNull()
-        .isEqualTo(response.getCreatedAt().plus(expirationDurationProperties.getRealEstate()));
+        .isEqualTo(response.getCreatedAt().plus(expirationDurationProperties.realEstate()));
   }
 
   @Test
@@ -116,7 +116,7 @@ class ClassifiedControllerIT extends IntegrationTestConfig {
     assertThat(response.getCreatedAt()).isNotNull();
     assertThat(response.getExpiresAt())
         .isNotNull()
-        .isEqualTo(response.getCreatedAt().plus(expirationDurationProperties.getVehicle()));
+        .isEqualTo(response.getCreatedAt().plus(expirationDurationProperties.vehicle()));
   }
 
   @Test
@@ -153,7 +153,7 @@ class ClassifiedControllerIT extends IntegrationTestConfig {
     assertThat(response.getCreatedAt()).isNotNull();
     assertThat(response.getExpiresAt())
         .isNotNull()
-        .isEqualTo(response.getCreatedAt().plus(expirationDurationProperties.getShopping()));
+        .isEqualTo(response.getCreatedAt().plus(expirationDurationProperties.shopping()));
   }
 
   @Test
@@ -190,7 +190,7 @@ class ClassifiedControllerIT extends IntegrationTestConfig {
     assertThat(response.getCreatedAt()).isNotNull();
     assertThat(response.getExpiresAt())
         .isNotNull()
-        .isEqualTo(response.getCreatedAt().plus(expirationDurationProperties.getOther()));
+        .isEqualTo(response.getCreatedAt().plus(expirationDurationProperties.other()));
   }
 
   @Test
@@ -227,7 +227,7 @@ class ClassifiedControllerIT extends IntegrationTestConfig {
     assertThat(response.getCreatedAt()).isNotNull();
     assertThat(response.getExpiresAt())
         .isNotNull()
-        .isEqualTo(response.getCreatedAt().plus(expirationDurationProperties.getRealEstate()));
+        .isEqualTo(response.getCreatedAt().plus(expirationDurationProperties.realEstate()));
   }
 
   @Test

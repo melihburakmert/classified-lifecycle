@@ -31,11 +31,11 @@ public class ClassifiedServiceImp implements ClassifiedService {
   @Override
   @Transactional
   public ClassifiedDto createClassified(final ClassifiedRequestDto requestDto) {
-    log.info("Creating classified with title: {}", requestDto.getTitle());
+    log.info("Creating classified with title: {}", requestDto.title());
 
-    final ClassifiedCategory category = requestDto.getCategory();
-    final String title = requestDto.getTitle();
-    final String description = requestDto.getDescription();
+    final ClassifiedCategory category = requestDto.category();
+    final String title = requestDto.title();
+    final String description = requestDto.description();
 
     final ClassifiedStatus initialStatus = determineInitialStatus(title, description, category);
     final Instant createdAt = Instant.now();

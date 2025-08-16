@@ -48,9 +48,9 @@ class ClassifiedStatusCountProjectionMapperUT {
 
     // THEN
     assertThat(dto).isNotNull();
-    assertThat(dto.getCountByStatus()).isNotNull();
-    assertThat(dto.getCountByStatus()).hasSize(2);
-    assertThat(dto.getCountByStatus()).containsEntry(status1, count1);
-    assertThat(dto.getCountByStatus()).containsEntry(status2, count2);
+    assertThat(dto.countByStatus()).isNotNull();
+    assertThat(dto.countByStatus()).hasSize(2);
+    assertThat(dto.countByStatus()).containsEntry(status1, count1);
+    assertThat(dto.countByStatus()).containsEntry(status2, count2);
   }
 }

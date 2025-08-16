@@ -14,17 +14,11 @@ public class ClassifiedExpirationCalculator {
 
   public Instant calculateExpirationDate(
       final ClassifiedCategory category, final Instant createdAt) {
-    switch (category) {
-      case REAL_ESTATE:
-        return createdAt.plus(properties.getRealEstate());
-      case VEHICLE:
-        return createdAt.plus(properties.getVehicle());
-      case SHOPPING:
-        return createdAt.plus(properties.getShopping());
-      case OTHER:
-        return createdAt.plus(properties.getOther());
-      default:
-        throw new IllegalArgumentException("Unknown category: " + category);
-    }
+      return switch (category) {
+          case REAL_ESTATE -> createdAt.plus(properties.realEstate());
+          case VEHICLE -> createdAt.plus(properties.vehicle());
+          case SHOPPING -> createdAt.plus(properties.shopping());
+          case OTHER -> createdAt.plus(properties.other());
+      };
   }
 }

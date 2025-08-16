@@ -16,15 +16,15 @@ public class ClassifiedHistoryResponseMapper {
 
   private ClassifiedStatusHistoryResponse map(final ClassifiedHistoryDto dto) {
     final ClassifiedStatus previousStatus =
-        dto.getPreviousStatus() != null ? getClassifiedStatus(dto.getPreviousStatus()) : null;
-    final ClassifiedStatus newStatus = getClassifiedStatus(dto.getNewStatus());
+        dto.previousStatus() != null ? getClassifiedStatus(dto.previousStatus()) : null;
+    final ClassifiedStatus newStatus = getClassifiedStatus(dto.newStatus());
 
     return new ClassifiedStatusHistoryResponse()
-        .id(dto.getId())
-        .classifiedId(dto.getClassifiedId())
+        .id(dto.id())
+        .classifiedId(dto.classifiedId())
         .previousStatus(previousStatus)
         .newStatus(newStatus)
-        .changedAt(dto.getChangedAt());
+        .changedAt(dto.changedAt());
   }
 
   private ClassifiedStatus getClassifiedStatus(

@@ -27,12 +27,12 @@ class ClassifiedEntityMapperUT {
 
     // THEN
     assertThat(dto).isNotNull();
-    assertThat(dto.getId()).isEqualTo(entity.getId());
-    assertThat(dto.getTitle()).isEqualTo(entity.getTitle());
-    assertThat(dto.getDescription()).isEqualTo(entity.getDescription());
-    assertThat(dto.getCategory()).isEqualTo(entity.getCategory());
-    assertThat(dto.getStatus()).isEqualTo(entity.getStatus());
-    assertThat(dto.getCreatedAt()).isEqualTo(entity.getCreatedAt());
-    assertThat(dto.getExpiresAt()).isEqualTo(entity.getExpiresAt());
+    assertThat(dto.id()).isEqualTo(entity.getId());
+    assertThat(dto.title()).isEqualTo(entity.getTitle());
+    assertThat(dto.description()).isEqualTo(entity.getDescription());
+    assertThat(dto.category()).isEqualTo(entity.getCategory());
+    assertThat(dto.status()).isEqualTo(entity.getStatus());
+    assertThat(dto.createdAt()).isEqualTo(entity.getCreatedAt());
+    assertThat(dto.expiresAt()).isEqualTo(entity.getExpiresAt());
   }
 }

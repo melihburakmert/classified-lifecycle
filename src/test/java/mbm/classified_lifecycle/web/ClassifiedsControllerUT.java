@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -59,11 +60,11 @@ class ClassifiedsControllerUT {
 
     // THEN
     assertThat(entity).isNotNull();
-    assertThat(entity.getStatusCodeValue()).isEqualTo(201);
+    assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.CREATED);
     assertThat(entity.getBody()).isEqualTo(response);
     assertThat(entity.getHeaders().getLocation()).isNotNull();
     assertThat(entity.getHeaders().getLocation().toString())
-        .contains(classifiedDto.getId().toString());
+        .contains(classifiedDto.id().toString());
 
     RequestContextHolder.resetRequestAttributes();
   }
@@ -83,7 +84,7 @@ class ClassifiedsControllerUT {
 
     // THEN
     assertThat(entity).isNotNull();
-    assertThat(entity.getStatusCodeValue()).isEqualTo(200);
+    assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
     assertThat(entity.getBody()).isEqualTo(response);
   }
 
@@ -103,7 +104,7 @@ class ClassifiedsControllerUT {
 
     // THEN
     assertThat(entity).isNotNull();
-    assertThat(entity.getStatusCodeValue()).isEqualTo(200);
+    assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
     assertThat(entity.getBody()).isEqualTo(response);
   }
 }

@@ -58,7 +58,6 @@ class ClassifiedHistoryProjectionMapperUT {
     when(projection2.getChangedAt()).thenReturn(changedAt2);
 
     // WHEN
-
     final List<ClassifiedHistoryDto> historyDtos = mapper.map(projections);
 
     // THEN
@@ -66,18 +65,18 @@ class ClassifiedHistoryProjectionMapperUT {
         .hasSize(2)
         .satisfiesExactlyInAnyOrder(
             historyDto -> {
-              assertThat(historyDto.getId()).isEqualTo(id1);
-              assertThat(historyDto.getClassifiedId()).isEqualTo(classifiedId1);
-              assertThat(historyDto.getPreviousStatus()).isEqualTo(previousStatus1);
-              assertThat(historyDto.getNewStatus()).isEqualTo(newStatus1);
-              assertThat(historyDto.getChangedAt()).isEqualTo(changedAt1);
+              assertThat(historyDto.id()).isEqualTo(id1);
+              assertThat(historyDto.classifiedId()).isEqualTo(classifiedId1);
+              assertThat(historyDto.previousStatus()).isEqualTo(previousStatus1);
+              assertThat(historyDto.newStatus()).isEqualTo(newStatus1);
+              assertThat(historyDto.changedAt()).isEqualTo(changedAt1);
             },
             historyDto -> {
-              assertThat(historyDto.getId()).isEqualTo(id2);
-              assertThat(historyDto.getClassifiedId()).isEqualTo(classifiedId2);
-              assertThat(historyDto.getPreviousStatus()).isEqualTo(previousStatus2);
-              assertThat(historyDto.getNewStatus()).isEqualTo(newStatus2);
-              assertThat(historyDto.getChangedAt()).isEqualTo(changedAt2);
+              assertThat(historyDto.id()).isEqualTo(id2);
+              assertThat(historyDto.classifiedId()).isEqualTo(classifiedId2);
+              assertThat(historyDto.previousStatus()).isEqualTo(previousStatus2);
+              assertThat(historyDto.newStatus()).isEqualTo(newStatus2);
+              assertThat(historyDto.changedAt()).isEqualTo(changedAt2);
             });
   }
 }

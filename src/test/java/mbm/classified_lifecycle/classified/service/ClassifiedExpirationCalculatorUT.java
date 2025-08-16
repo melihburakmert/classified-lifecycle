@@ -30,7 +30,7 @@ class ClassifiedExpirationCalculatorUT {
     // GIVEN
     final Instant now = Instant.now();
     final Duration duration = Duration.ofDays(30);
-    when(properties.getRealEstate()).thenReturn(duration);
+    when(properties.realEstate()).thenReturn(duration);
 
     // WHEN
     final Instant result = calculator.calculateExpirationDate(ClassifiedCategory.REAL_ESTATE, now);
@@ -44,7 +44,7 @@ class ClassifiedExpirationCalculatorUT {
     // GIVEN
     final Instant now = Instant.now();
     final Duration duration = Duration.ofDays(15);
-    when(properties.getVehicle()).thenReturn(duration);
+    when(properties.vehicle()).thenReturn(duration);
 
     // WHEN
     final Instant result = calculator.calculateExpirationDate(ClassifiedCategory.VEHICLE, now);
@@ -58,7 +58,7 @@ class ClassifiedExpirationCalculatorUT {
     // GIVEN
     final Instant now = Instant.now();
     final Duration duration = Duration.ofDays(7);
-    when(properties.getShopping()).thenReturn(duration);
+    when(properties.shopping()).thenReturn(duration);
 
     // WHEN
     final Instant result = calculator.calculateExpirationDate(ClassifiedCategory.SHOPPING, now);
@@ -72,7 +72,7 @@ class ClassifiedExpirationCalculatorUT {
     // GIVEN
     final Instant now = Instant.now();
     final Duration duration = Duration.ofDays(3);
-    when(properties.getOther()).thenReturn(duration);
+    when(properties.other()).thenReturn(duration);
 
     // WHEN
     final Instant result = calculator.calculateExpirationDate(ClassifiedCategory.OTHER, now);

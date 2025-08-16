@@ -57,7 +57,7 @@ public class ClassifiedsController implements ClassifiedsApiDelegate {
   private URI getCreatedLocation(final ClassifiedDto classifiedDto) {
     return ServletUriComponentsBuilder.fromCurrentRequest()
         .path("/{id}")
-        .buildAndExpand(classifiedDto.getId())
+        .buildAndExpand(classifiedDto.id())
         .toUri();
   }
 }

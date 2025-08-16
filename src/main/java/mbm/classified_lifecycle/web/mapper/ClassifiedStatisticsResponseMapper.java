@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 public class ClassifiedStatisticsResponseMapper {
 
   public ClassifiedStatisticsResponse map(final ClassifiedStatisticsDto dto) {
-    return new ClassifiedStatisticsResponse().countByStatus(dto.getCountByStatus());
+    return new ClassifiedStatisticsResponse().countByStatus(dto.countByStatus());
   }
 }
