@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  title: Classifieds Lifecycle API
+  description: API for managing the lifecycle of classified advertisements
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: classifieds
+    description: Operations for classified ads
+
+paths:
+  /classifieds:
+    post:
+      tags:
+        - classifieds
+      summary: Create a new classified ad
+      operationId: createClassified
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClassifiedRequest'
+      responses:
+        '201':
+          description: Successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassifiedResponse'
+        '400':
+          description: Bad request - validation errors
+          content:
+            application/json:
+              schema:
+                $ref: './common-schema.yaml#/components/schemas/ErrorResponse'
+
+  /classifieds/{id}/activate:
+    post:
+      tags:
+        - classifieds
+      summary: Approve and activate an ad in PENDING_APPROVAL status
+      description: Changes status from PENDING_APPROVAL to ACTIVE
+      operationId: activateClassified
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Ad activated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassifiedResponse'
+        '400':
+          description: Invalid status change - ad is not in PENDING_APPROVAL status
+          content:
+            application/json:
+              schema:
+                $ref: './common-schema.yaml#/components/schemas/ErrorResponse'
+        '404':
+          description: Classified ad not found
+          content:
+            application/json:
+              schema:
+                $ref: './common-schema.yaml#/components/schemas/ErrorResponse'
+
+  /classifieds/{id}/deactivate:
+    post:
+      tags:
+        - classifieds
+      summary: Deactivate an ad in ACTIVE or PENDING_APPROVAL status
+      description: Changes status to INACTIVE from either ACTIVE or PENDING_APPROVAL
+      operationId: deactivateClassified
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Ad deactivated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassifiedResponse'
+        '400':
+          description: Invalid status change - ad is not in ACTIVE or PENDING_APPROVAL status
+          content:
+            application/json:
+              schema:
+                $ref: './common-schema.yaml#/components/schemas/ErrorResponse'
+        '404':
+          description: Classified ad not found
+          content:
+            application/json:
+              schema:
+                $ref: './common-schema.yaml#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    ClassifiedRequest:
+      type: object
+      required:
+        - title
+        - description
+        - category
+      properties:
+        title:
+          type: string
+          minLength: 10
+          maxLength: 50
+          pattern: '^[a-zA-Z0-9].*'
+          description: |
+            Title of the classified ad, must start with a letter or number.
+            Cannot contain any words listed in the Badwords.txt file.
+          x-validate-badwords: true
+        description:
+          type: string
+          minLength: 20
+          maxLength: 200
+          description: Detailed description of the classified ad
+        category:
+          $ref: './common-schema.yaml#/components/schemas/ClassifiedCategory'
+
+    ClassifiedResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier of the classified ad
+        title:
+          type: string
+          description: Title of the classified ad
+        description:
+          type: string
+          description: Detailed description of the classified ad
+        category:
+          $ref: './common-schema.yaml#/components/schemas/ClassifiedCategory'
+        status:
+          $ref: './common-schema.yaml#/components/schemas/ClassifiedStatus'
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation date of the classified ad
+        expiresAt:
+          type: string
+          format: date-time
+          description: Expiration date of the classified ad

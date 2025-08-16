@@ -1,0 +1,14 @@
+services:
+  classified-lifecycle:
+    container_name: classified-lifecycle
+    image: mbm/classified-lifecycle:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - classified-lifecycle-network
+
+networks:
+    classified-lifecycle-network:
+        driver: bridge

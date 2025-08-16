@@ -1,0 +1,227 @@
+databaseChangeLog:
+  - changeSet:
+      id: test-data-1
+      author: mbm
+      changes:
+        - insert:
+            tableName: classified
+            columns:
+              - column:
+                  name: id
+                  value: "a1e4567e-e89b-12d3-a456-426614174001"
+              - column:
+                  name: title
+                  value: "Estate Pending"
+              - column:
+                  name: description
+                  value: "Pending approval for estate classified"
+              - column:
+                  name: category
+                  value: "REAL_ESTATE"
+              - column:
+                  name: status
+                  value: "PENDING_APPROVAL"
+              - column:
+                  name: created_at
+                  value: "2024-07-01T09:00:00Z"
+              - column:
+                  name: expires_at
+                  value: "2024-07-29T09:00:00Z"
+        - insert:
+            tableName: classified
+            columns:
+              - column:
+                  name: id
+                  value: "b2e4567e-e89b-12d3-a456-426614174002"
+              - column:
+                  name: title
+                  value: "Vehicle Expired"
+              - column:
+                  name: description
+                  value: "Expired vehicle classified"
+              - column:
+                  name: category
+                  value: "VEHICLE"
+              - column:
+                  name: status
+                  value: "EXPIRED"
+              - column:
+                  name: created_at
+                  value: "2024-06-01T08:00:00Z"
+              - column:
+                  name: expires_at
+                  value: "2024-06-22T08:00:00Z"
+        - insert:
+            tableName: classified
+            columns:
+              - column:
+                  name: id
+                  value: "c3e4567e-e89b-12d3-a456-426614174003"
+              - column:
+                  name: title
+                  value: "Shopping Active"
+              - column:
+                  name: description
+                  value: "Active shopping classified"
+              - column:
+                  name: category
+                  value: "SHOPPING"
+              - column:
+                  name: status
+                  value: "ACTIVE"
+              - column:
+                  name: created_at
+                  value: "2024-07-10T10:00:00Z"
+              - column:
+                  name: expires_at
+                  value: "2024-09-04T10:00:00Z"
+        - insert:
+            tableName: classified
+            columns:
+              - column:
+                  name: id
+                  value: "d4e4567e-e89b-12d3-a456-426614174004"
+              - column:
+                  name: title
+                  value: "Shopping Active 2"
+              - column:
+                  name: description
+                  value: "Another active shopping classified"
+              - column:
+                  name: category
+                  value: "SHOPPING"
+              - column:
+                  name: status
+                  value: "ACTIVE"
+              - column:
+                  name: created_at
+                  value: "2024-07-12T12:00:00Z"
+              - column:
+                  name: expires_at
+                  value: "2024-09-06T12:00:00Z"
+        - insert:
+            tableName: classified_history
+            columns:
+              - column:
+                  name: id
+                  value: "e1e4567e-e89b-12d3-a456-426614174101"
+              - column:
+                  name: classified_id
+                  value: "a1e4567e-e89b-12d3-a456-426614174001"
+              - column:
+                  name: previous_status
+                  value: null
+              - column:
+                  name: new_status
+                  value: "PENDING_APPROVAL"
+              - column:
+                  name: changed_at
+                  value: "2024-07-01T09:01:00Z"
+        - insert:
+            tableName: classified_history
+            columns:
+              - column:
+                  name: id
+                  value: "f2e4567e-e89b-12d3-a456-426614174102"
+              - column:
+                  name: classified_id
+                  value: "b2e4567e-e89b-12d3-a456-426614174002"
+              - column:
+                  name: previous_status
+                  value: null
+              - column:
+                  name: new_status
+                  value: "PENDING_APPROVAL"
+              - column:
+                  name: changed_at
+                  value: "2024-06-01T08:01:00Z"
+        - insert:
+            tableName: classified_history
+            columns:
+              - column:
+                  name: id
+                  value: "f3e4567e-e89b-12d3-a456-426614174103"
+              - column:
+                  name: classified_id
+                  value: "b2e4567e-e89b-12d3-a456-426614174002"
+              - column:
+                  name: previous_status
+                  value: "PENDING_APPROVAL"
+              - column:
+                  name: new_status
+                  value: "ACTIVE"
+              - column:
+                  name: changed_at
+                  value: "2024-06-02T08:01:00Z"
+        - insert:
+            tableName: classified_history
+            columns:
+              - column:
+                  name: id
+                  value: "f4e4567e-e89b-12d3-a456-426614174104"
+              - column:
+                  name: classified_id
+                  value: "b2e4567e-e89b-12d3-a456-426614174002"
+              - column:
+                  name: previous_status
+                  value: "ACTIVE"
+              - column:
+                  name: new_status
+                  value: "INACTIVE"
+              - column:
+                  name: changed_at
+                  value: "2024-06-10T08:01:00Z"
+        - insert:
+            tableName: classified_history
+            columns:
+              - column:
+                  name: id
+                  value: "f5e4567e-e89b-12d3-a456-426614174105"
+              - column:
+                  name: classified_id
+                  value: "b2e4567e-e89b-12d3-a456-426614174002"
+              - column:
+                  name: previous_status
+                  value: "INACTIVE"
+              - column:
+                  name: new_status
+                  value: "EXPIRED"
+              - column:
+                  name: changed_at
+                  value: "2024-06-22T08:01:00Z"
+        - insert:
+            tableName: classified_history
+            columns:
+              - column:
+                  name: id
+                  value: "a3e4567e-e89b-12d3-a456-426614174106"
+              - column:
+                  name: classified_id
+                  value: "c3e4567e-e89b-12d3-a456-426614174003"
+              - column:
+                  name: previous_status
+                  value: null
+              - column:
+                  name: new_status
+                  value: "ACTIVE"
+              - column:
+                  name: changed_at
+                  value: "2024-07-10T10:01:00Z"
+        - insert:
+            tableName: classified_history
+            columns:
+              - column:
+                  name: id
+                  value: "b4e4567e-e89b-12d3-a456-426614174107"
+              - column:
+                  name: classified_id
+                  value: "d4e4567e-e89b-12d3-a456-426614174004"
+              - column:
+                  name: previous_status
+                  value: null
+              - column:
+                  name: new_status
+                  value: "ACTIVE"
+              - column:
+                  name: changed_at
+                  value: "2024-07-12T12:01:00Z"

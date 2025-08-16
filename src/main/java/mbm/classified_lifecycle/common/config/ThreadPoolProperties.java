@@ -1,0 +1,15 @@
+package mbm.classified_lifecycle.common.config;
+
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Data
+@Component
+@ConfigurationProperties(prefix = "classified.thread-pool")
+public class ThreadPoolProperties {
+  private int corePoolSize;
+  private int maxPoolSize;
+  private int queueCapacity;
+  private String threadNamePrefix;
+}

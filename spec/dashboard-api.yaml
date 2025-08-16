@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info:
+  title: Classifieds Lifecycle API - Dashboard
+  description: API for querying statistics and monitoring classified advertisements
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: dashboard
+    description: Dashboard operations for statistics and monitoring
+
+paths:
+  /dashboard/classifieds/{id}/history:
+    get:
+      tags:
+        - dashboard
+      summary: Get the status change history of a classified ad
+      operationId: getClassifiedStatusHistory
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Status history retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClassifiedStatusHistoryResponse'
+        '404':
+          description: Classified ad not found
+          content:
+            application/json:
+              schema:
+                $ref: './common-schema.yaml#/components/schemas/ErrorResponse'
+
+  /dashboard/classifieds/statistics:
+    get:
+      tags:
+        - dashboard
+      summary: Get statistics about classified ads by status
+      operationId: getClassifiedStatistics
+      responses:
+        '200':
+          description: Statistics retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassifiedStatisticsResponse'
+
+components:
+  schemas:
+    ClassifiedStatusHistoryResponse:
+      type: object
+      required:
+        - id
+        - classifiedId
+        - previousStatus
+        - newStatus
+        - changedAt
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the history entry
+        classifiedId:
+          type: string
+          format: uuid
+          description: ID of the associated classified ad
+        previousStatus:
+          $ref: './common-schema.yaml#/components/schemas/ClassifiedStatus'
+        newStatus:
+          $ref: './common-schema.yaml#/components/schemas/ClassifiedStatus'
+        changedAt:
+          type: string
+          format: date-time
+          description: When the status was changed
+
+    ClassifiedStatisticsResponse:
+      type: object
+      properties:
+        countByStatus:
+          type: object
+          additionalProperties:
+            type: integer
+          example:
+            ACTIVE: 151
+            INACTIVE: 71
+            PENDING_APPROVAL: 23
+            DUPLICATE: 5
+            EXPIRED: 12

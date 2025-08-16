@@ -1,0 +1,104 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: mbm
+      comment: "Create tables for classified ads management"
+      changes:
+        - createTable:
+            tableName: classified
+            remarks: "Stores classified advertisements"
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_classified
+              - column:
+                  name: title
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expires_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - createTable:
+            tableName: classified_history
+            remarks: "Stores history of status changes for classified ads"
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    primaryKeyName: pk_classified_history
+              - column:
+                  name: classified_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_classified_history_classified
+                    references: classified(id)
+              - column:
+                  name: previous_status
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: new_status
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: changed_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+
+        - createIndex:
+            indexName: idx_classified_status
+            tableName: classified
+            columns:
+              - column:
+                  name: status
+
+        - createIndex:
+            indexName: idx_classified_category
+            tableName: classified
+            columns:
+              - column:
+                  name: category
+
+        - createIndex:
+            indexName: idx_classified_history_classified_id
+            tableName: classified_history
+            columns:
+              - column:
+                  name: classified_id
