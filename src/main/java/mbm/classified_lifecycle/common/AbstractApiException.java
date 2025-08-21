@@ -1,4 +1,4 @@
-package mbm.classified_lifecycle.common.exception;
+package mbm.classified_lifecycle.common;
 
 import org.springframework.http.HttpStatus;
 

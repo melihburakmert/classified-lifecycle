@@ -2,7 +2,9 @@ package mbm.classified_lifecycle.common.exception;
 
 import java.time.Instant;
 import java.util.stream.Collectors;
-import mbm.classified_lifecycle.web.model.ErrorResponse;
+
+import mbm.classified_lifecycle.common.AbstractApiException;
+import mbm.classified_lifecycle.common.model.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

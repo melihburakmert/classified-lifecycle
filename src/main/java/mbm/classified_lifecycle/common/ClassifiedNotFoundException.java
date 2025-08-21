@@ -1,7 +1,7 @@
 package mbm.classified_lifecycle.common;
 
 import java.util.UUID;
-import mbm.classified_lifecycle.common.exception.AbstractApiException;
+
 import org.springframework.http.HttpStatus;
 
 public class ClassifiedNotFoundException extends AbstractApiException {

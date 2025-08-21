@@ -2,7 +2,7 @@ package mbm.classified_lifecycle.classified.exception;
 
 import java.util.UUID;
 import mbm.classified_lifecycle.common.ClassifiedStatus;
-import mbm.classified_lifecycle.common.exception.AbstractApiException;
+import mbm.classified_lifecycle.common.AbstractApiException;
 import org.springframework.http.HttpStatus;
 
 public class InvalidActivateException extends AbstractApiException {
