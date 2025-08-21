@@ -14,8 +14,8 @@ Classifieds module is responsible for managing classified ads lifecycle.
 ## Running the Application
 
 ### Prerequisites
-- Java 11
-- Maven 3.6+
+- Java 21+
+- Maven 3.9.5+
 - Docker (optional for containerization)
 
 ### Running Locally
